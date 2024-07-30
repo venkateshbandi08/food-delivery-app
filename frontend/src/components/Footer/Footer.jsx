@@ -7,11 +7,10 @@ const Footer = () => {
     <div className="footer" id="footer">
       <div className="footer-content">
         <div className="footer-content-left">
-          <img src={assets.logo} alt="" />
+          <img src={assets.big_byte_logo} alt="" />
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam
-            repellat ab ullam mollitia ipsa similique cum fugit in, magnam
-            beatae?
+            "Discover fresh flavors delivered to your doorstep with ease. Your
+            go-to destination for convenient and delicious dining experiences."
           </p>
           <div className="footer-social-icons">
             <img src={assets.facebook_icon} alt="" />
@@ -31,14 +30,14 @@ const Footer = () => {
         <div className="footer-content-right">
           <h2>GET IN TOUCH</h2>
           <ul>
-            <li>+91 9494949494 </li>
-            <li>fooddelivery@mail.com</li>
+            <li>+91 9859859854 </li>
+            <li>bigbytefoods@mail.com</li>
           </ul>
         </div>
       </div>
       <hr />
       <p className="footer-copy-right">
-        Copyright 2024 © Fooddelivery.com - All Rights Reserved.
+        Copyright 2024 © bigbytefoods - All Rights Reserved.
       </p>
     </div>
   );

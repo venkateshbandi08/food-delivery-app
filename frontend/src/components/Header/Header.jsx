@@ -8,8 +8,8 @@ const Header = () => {
       <div className="header-contents">
         <h2>Order your favourite food here </h2>
         <p>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quis aliquid
-          aperiam at ipsa iusto nam ullam velit voluptatum omnis facilis?
+          "Discover fresh flavors delivered to your doorstep with ease. Your
+          go-to destination for convenient and delicious dining experiences."
         </p>
         <button>View Menu</button>
       </div>
