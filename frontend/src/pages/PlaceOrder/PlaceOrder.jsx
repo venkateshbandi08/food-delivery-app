@@ -54,6 +54,7 @@ const PlaceOrder = () => {
     });
     if (response.data.success) {
       const { session_url } = response.data;
+      console.log(session_url);
       window.location.replace(session_url);
     } else {
       alert("Error in proceeding with Payment");

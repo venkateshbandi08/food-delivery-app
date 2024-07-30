@@ -7,34 +7,34 @@ import { assets } from "../../assets/frontend_assets/assets";
 const MyOrders = () => {
   const { baseUrl, token } = useContext(StoreContext);
   const [data, setData] = useState([]);
-  // console.log(token);
+  const [error, setError] = useState(null);
+
   const fetchOrders = async () => {
-    // console.log(token);
-    setTimeout(async () => {
-      try {
-        const response = await axios.post(
-          `${baseUrl}/api/order/userorders`,
-          {},
-          {
-            headers: { token },
-          }
-        );
-        setData(response.data.data);
-        console.log(response);
-      } catch (error) {
-        console.error("Error in fetching orders:", error);
-      }
-    }, 1000);
+    try {
+      const response = await axios.post(
+        `${baseUrl}/api/order/userorders`,
+        {},
+        {
+          headers: { token },
+        }
+      );
+      setData(response.data.data);
+      console.log(response);
+    } catch (error) {
+      console.error("Error in fetching orders:", error);
+      setError("Failed to fetch orders. Please try again later.");
+    }
   };
 
   useEffect(() => {
     fetchOrders();
-  }, []);
+  }, [baseUrl, token]);
 
   return (
     <div className="my-orders">
       <h2>My Orders</h2>
       <div className="container">
+        {error && <p className="error-message">{error}</p>}
         {data.map((order, index) => (
           <div key={index} className="my-orders-order">
             <img src={assets.parcel_icon} alt="Parcel Icon" />

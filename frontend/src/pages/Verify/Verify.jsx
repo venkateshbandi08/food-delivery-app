@@ -5,20 +5,21 @@ import { StoreContext } from "../../context/StoreContext";
 import axios from "axios";
 
 const Verify = () => {
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
   const success = searchParams.get("success");
   const orderId = searchParams.get("orderId");
   const { baseUrl, token } = useContext(StoreContext);
   const navigate = useNavigate();
+
   const verifyPayment = async () => {
-    setTimeout(async () => {
+    try {
       const response = await axios.post(
         baseUrl + "/api/order/verify",
         {
           success,
           orderId,
-        }
-        // { headers: { token } }
+        },
+        { headers: { token } }
       );
       console.log(response);
       if (response.data.success) {
@@ -26,12 +27,19 @@ const Verify = () => {
       } else {
         navigate("/");
       }
-    }, 3000);
+    } catch (error) {
+      console.error("Error verifying payment:", error);
+      navigate("/");
+    }
   };
 
   useEffect(() => {
-    verifyPayment();
-  }, []);
+    const timeoutId = setTimeout(() => {
+      verifyPayment();
+    }, 3000);
+
+    return () => clearTimeout(timeoutId); // Cleanup timeout
+  }, [baseUrl, token, success, orderId, navigate]);
 
   return (
     <div className="verify">
