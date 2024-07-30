@@ -11,16 +11,22 @@ const Verify = () => {
   const { baseUrl, token } = useContext(StoreContext);
   const navigate = useNavigate();
   const verifyPayment = async () => {
-    const response = await axios.post(baseUrl + "/api/order/verify", {
-      success,
-      orderId,
-    });
-    console.log(response);
-    if (response.data.success) {
-      navigate("/myorders");
-    } else {
-      navigate("/");
-    }
+    setTimeout(async () => {
+      const response = await axios.post(
+        baseUrl + "/api/order/verify",
+        {
+          success,
+          orderId,
+        }
+        // { headers: { token } }
+      );
+      console.log(response);
+      if (response.data.success) {
+        navigate("/myorders");
+      } else {
+        navigate("/");
+      }
+    }, 3000);
   };
 
   useEffect(() => {

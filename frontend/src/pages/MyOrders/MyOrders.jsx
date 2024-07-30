@@ -10,19 +10,21 @@ const MyOrders = () => {
   // console.log(token);
   const fetchOrders = async () => {
     // console.log(token);
-    try {
-      const response = await axios.post(
-        `${baseUrl}/api/order/userorders`,
-        {},
-        {
-          headers: { token },
-        }
-      );
-      setData(response.data.data);
-      // console.log(response);
-    } catch (error) {
-      console.error("Error in fetching orders:", error);
-    }
+    setTimeout(async () => {
+      try {
+        const response = await axios.post(
+          `${baseUrl}/api/order/userorders`,
+          {},
+          {
+            headers: { token },
+          }
+        );
+        setData(response.data.data);
+        console.log(response);
+      } catch (error) {
+        console.error("Error in fetching orders:", error);
+      }
+    }, 1000);
   };
 
   useEffect(() => {
