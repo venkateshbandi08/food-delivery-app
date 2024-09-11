@@ -8,7 +8,7 @@ const AppDownload = () => {
       <p>
         For Better Experience Download
         <br />
-        Tomato App
+        Big Byte
       </p>
       <div className="app-download-platforms">
         <img src={assets.play_store} alt="" />
